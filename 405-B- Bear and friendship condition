@@ -1,0 +1,51 @@
+/// just cheak vertex and edge . remember that this programme only for three people and they and connected each other not for 4,5,6 then so....
+/// try to use simple dfs and good for beginner
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+long long vertex,edge;
+long long vis[150001];
+map<int,vector<int> >G;
+
+void dfs(int n)
+{
+    vertex++;
+    if(vis[n]==0)
+    {
+        vis[n]=1;
+        for(int i=0; i<G[n].size(); i++)
+        {
+            edge++;
+            if(vis[G[n][i]]==0)
+                dfs(G[n][i]);
+        }
+    }
+}
+
+int main()
+{
+    int n,m,i;
+    cin>>n>>m;
+    //map<int,vector<int> >G;
+    int a,b;
+    for(i=0; i<m; i++)
+    {
+        cin>>a>>b;
+        G[a].push_back(b);
+        G[b].push_back(a);
+    }
+    for(i=1; i<=n; i++)
+    {
+        vertex=edge=0;
+        dfs(i);
+        if(edge!=vertex*(vertex-1))
+        {
+            cout<<"NO";
+            return 0;
+        }
+    }
+    cout<<"YES";
+}

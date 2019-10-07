@@ -1,0 +1,36 @@
+/// Here we have got the simple logic...If we assign value one into another at last all the value will turn into one alphabet.
+/// If we look carefully both of the string have only one same alphabet then they will turn into same string
+
+/// here the code goes
+
+/// using map it cost minimum complexity
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int t;
+    scanf("%d", &t);
+    while(t--)
+    {
+        int flag=0;
+        char st[105],n[105];
+        map<char,int>m;
+        scanf("%s", st);
+        int l= strlen(st);
+        for(int i=0;i<l;i++) m[st[i]]=1;
+        scanf("%s", n);
+        for(int i=0;i< l;i++)
+        {
+            if(m[n[i]]==1)
+            {
+                flag=1;
+                break;
+            }
+        }
+        if(flag==1) cout<<"YES\n";
+        else cout<<"NO\n";
+    }
+}
+
+/// happy coding
